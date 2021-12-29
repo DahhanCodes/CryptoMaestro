@@ -27,7 +27,7 @@ form.addEventListener('submit', async function (e) {
 
     
 // Object.values(res.data['Meta Data']).forEach(element => {
-//     console.log(element)
+//     conssdasdaole.log(element)
 // });
     
     
@@ -37,7 +37,7 @@ form.addEventListener('submit', async function (e) {
     
     
     // var info = [res.data]
-    // console.log(info)
+    // console.dsadsadasdlog(info)
 })
 
 
