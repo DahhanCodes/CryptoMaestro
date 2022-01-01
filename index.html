@@ -43,7 +43,25 @@
       <input type="text" placeholder="Stock Ticker" name="query" />
       <button>Search</button>
     </form>
-
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <p class="border border-danger border-3">Name: <span id="tickerName"></span></p>
+        </div>
+        <div class="col order-1">
+          <p class="border border-danger border-3">Previous Close: <span id="stockPrice"></span></p>
+        </div>
+        <div class="col order-2">
+          <p class="border border-danger border-3">MarketCap: <span id="stockMarketCap"></span></p>
+        </div>
+        <div class="col order-3">
+          <p class="border border-danger border-3">High: <span id="high"></span></p>
+        </div>
+        <div class="col order-4">
+          <p class="border border-danger border-3">low: <span id="low"></span></p>
+        </div>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
   </body>

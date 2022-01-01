@@ -1,5 +1,5 @@
-const form = document.querySelector('#searchForm')
 
+const form = document.querySelector('#searchForm')
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const searchTerm = form.elements.query.value;
@@ -22,6 +22,7 @@ form.addEventListener('submit', async function (e) {
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate());
     var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate())+' '+(today.getUTCHours())+':'+(today.getMinutes())+':'+'00';
+   
     console.log(date);
     console.log(time);
     var coinSearched = (res.data['Meta Data']['3. Digital Currency Name'])
@@ -43,11 +44,29 @@ form.addEventListener('submit', async function (e) {
 const secondForm = document.querySelector('#stockSearchForm')
 secondForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const stockTerm = secondForm.elements.secondQuery.value;
-    const stock = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stockTerm}/range/1/day/2020-06-01/2020-06-17?apiKey=9i7i9_KCzpeIvJGS3J4PRpwcu0E4vRiY`);
-    console.log(stock.data)
-})
+    var today = new Date();
+    var estDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate());
+    console.log(estDate);
+    var stockTerm = secondForm.elements.query.value;
+    
+    stockTerm = stockTerm.toUpperCase();
+    
+    const stock = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stockTerm}/prev?adjusted=true&apiKey=lHJ4GPGobT8l6AGkzz_iHfotJDNhUCeM`);
+    const info = await axios.get(`https://api.polygon.io/v1/meta/symbols/${stockTerm}/company?apiKey=lHJ4GPGobT8l6AGkzz_iHfotJDNhUCeM`);
+    console.log(stock.data);
+    console.log(info.data);
+    var price = (stock.data['results']['0']['c']);
+    var name = (info.data['name']);
+    var marketCap = (info.data['marketcap']);
+    var high = (stock.data['results']['0']['h']);
+    var low = (stock.data['results']['0']['l']);
 
+    document.getElementById("stockPrice").innerHTML = price;
+    document.getElementById("tickerName").innerHTML = name;
+    document.getElementById("stockMarketCap").innerHTML = marketCap;
+    document.getElementById("high").innerHTML = high;
+    document.getElementById("low").innerHTML = low;
+})
 
 
 // // ETHER //
@@ -58,6 +77,13 @@ secondForm.addEventListener('submit', async function (e) {
 //   .then(function (res) {
 //     console.log(res);
 //   });
+
+
+
+
+
+
+
 
 // // BITCOIN//
 // fetch(urlBTC)
