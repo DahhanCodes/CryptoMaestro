@@ -20,13 +20,15 @@ form.addEventListener('submit', async function (e) {
   
 // Variables for Crypto Search Criteria
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate());
+//creating a string date that will automatically add 0 to the date but will only keep the last two characters
+// therefore if month returns as 8 it will show as 08
+    var date = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getUTCDate()).slice(-2)
     var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate())+' '+(today.getUTCHours())+':'+(today.getMinutes())+':'+'00';
    
     console.log(date);
     console.log(time);
     var coinSearched = (res.data['Meta Data']['3. Digital Currency Name'])
-    var currentPrice = (res.data['Time Series (Digital Currency Daily)'][date]["4a. close (USD)"]);
+    var currentPrice = (res.data["Time Series (Digital Currency Daily)"][date]["4b. close (USD)"]);
     var weeklyChange = ((second.data['Time Series (Digital Currency Weekly)'][date]["1a. open (USD)"])-(second.data['Time Series (Digital Currency Weekly)'][date]["4a. close (USD)"]));
     var marketCap = (res.data['Time Series (Digital Currency Daily)'][date]["6. market cap (USD)"])
     var dayChange = ((res.data['Time Series (Digital Currency Daily)'][date]["1a. open (USD)"])-(res.data['Time Series (Digital Currency Daily)'][date]["4a. close (USD)"]));
@@ -45,7 +47,7 @@ const secondForm = document.querySelector('#stockSearchForm')
 secondForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     var today = new Date();
-    var estDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate());
+    var estDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getUTCDate()).slice(-2)
     console.log(estDate);
     var stockTerm = secondForm.elements.query.value;
     
