@@ -12,54 +12,51 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
-    <h1>CryptoMaestro</h1>
-    <label href="#searchForm" for="Crypto Market"> </label>
-    <label href="#stockSearchForm" for= "Stock Market"></label>
-    <form id="searchForm">
-      <input type="text" placeholder="Crypto Ticker" name="query" />
-      <button>Search</button>
-   </form>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          <p class="border border-danger border-3">Name: <span id="coinname"></span></p>
+    <h1 class="text-center mt-5 text-success">CryptoMaestro</h1>
+    <form id="searchForm" class ="text-center">
+      <input type="text" placeholder="Crypto Ticker" name="query" class="rounded"/>
+      <button class="rounded">Search</button>
+    </form>
+    <div class="container-fluid text-success mt-4 d-flex flex-column">
+      <div class="row ">
+        <div class="col w-25 p-3 h-75 d-inline-block">
+          <p>Name: <span id="coinname"></span></p>
         </div>
-        <div class="col order-1">
-          <p class="border border-danger border-3">Price: <span id="price"></span></p>
+        <div class="col order-1 w-25 p-3 h-75 d-inline-block">
+          <p>Price: <span id="price"></span></p>
         </div>
-        <div class="col order-2">
-          <p class="border border-danger border-3">Daily MarketCap: <span id="marketCap"></span></p>
+        <div class="col order-2 w-25 p-3 h-75 d-inline-block">
+          <p>Daily MarketCap: <span id="marketCap"></span></p>
         </div>
-        <div class="col order-3">
-          <p class="border border-danger border-3">Daily Change: <span id="dayChange"></span></p>
+        <div class="col order-3 w-25 p-3 h-75 d-inline-block">
+          <p>Daily Change: <span id="dayChange"></span></p>
         </div>
-        <div class="col order-4">
-          <p class="border border-danger border-3">Weekly Change: <span id="weeklyChange"></span></p>
+        <div class="col order-4 w-25 p-3 h-75 d-inline-block">
+          <p>Weekly Change: <span id="weeklyChange"></span></p>
         </div>
       </div>
     </div>
-    <form id="stockSearchForm">
-      <input type="text" placeholder="Stock Ticker" name="query" />
-      <button  id="searchButton">Search</button>
+    <form id="stockSearchForm" class ="text-center mt-5">
+      <input type="text" placeholder="Stock Ticker" name="query" class="rounded" />
+      <button class="rounded">Search</button>
     </form>
-    <div class="container-fluid">
+    <div class="container-fluid text-success mt-4 d-flex flex-column ">
       <div class="row">
         <div class="col">
-          <p class="border border-danger border-3">Name: <span id="tickerName"></span></p>
+          <p>Name: <span id="tickerName"></span></p>
         </div>
         <div class="col order-1">
-          <p class="border border-danger border-3">Previous Close: <span id="stockPrice"></span></p>
+          <p>Previous Close: <span id="stockPrice"></span></p>
         </div>
         <div class="col order-2">
-          <p class="border border-danger border-3">MarketCap: <span id="stockMarketCap"></span></p>
+          <p>MarketCap: <span id="stockMarketCap"></span></p>
         </div>
         <div class="col order-3">
-          <p class="border border-danger border-3">High: <span id="high"></span></p>
+          <p>High: <span id="high"></span></p>
         </div>
         <div class="col order-4">
-          <p class="border border-danger border-3">low: <span id="low"></span></p>
+          <p>low: <span id="low"></span></p>
         </div>
       </div>
     </div>

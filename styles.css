@@ -1,3 +1,5 @@
 body{
-  background-image: url("assets\maxresdefault.jpg");  
+  background-image: url("./assets/maxresdefault.jpg"); 
+  background-repeat: no-repeat;
+  background-size: cover;
 }
