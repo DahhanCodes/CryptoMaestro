@@ -1,5 +1,6 @@
 
 const form = document.querySelector('#searchForm')
+console.log(form);
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const searchTerm = form.elements.query.value;
@@ -71,8 +72,8 @@ secondForm.addEventListener('submit', async function (e) {
 })
 
 
-// // ETHER //
-// fetch(urlETH)
+// ETHER //
+//fetch(urlETH)
 //   .then(function (data) {
 //     return data.json();
 //   })
