@@ -84,15 +84,20 @@ $("#stockLabel").on('click',function stockPage(){
 })
 
 $("#homePage").on('click',function returnHome(){
-    $("#introPage").css('display','block');
+    $("#introPage").css('display','flex');
     $("#stockSearchForm").css('display','none');
     $("#stockMarket").css('display','none')
     $("#cryptoSearchForm").css('display','none');
     $("#cryptoMarket").css('display','none')
 })
 
-
-
+// var cLabel = document.getElementById("cryptoLabel")
+// var iPage =
+// var cSForm =
+// cLabel.addEventListener('click',cPage1)
+// function cPage1(){
+//     ipagedsad.style.display=block;
+// }
 
 
 
