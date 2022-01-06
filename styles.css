@@ -3,3 +3,40 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
+#intoPage{
+  display: flex;
+  flex-direction: row;
+}
+#cryptoSearchForm{
+  display: none;
+}
+#stockSearchForm{
+  display: none;
+}
+
+#cryptoMarket{
+  display: none;
+}
+
+#stockMarket{
+  display: none;
+}
+
+#cryptoLabel{
+  border: 2px solid black;
+  margin-left: 150px;
+  flex: 30%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: medium;
+  color: crimson;
+}
+#stockLabel{
+  border: 2px solid black;
+  margin-left: 100px;
+  flex: 30%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: medium;
+  color: crimson;
+}

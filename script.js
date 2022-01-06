@@ -1,5 +1,5 @@
 
-const form = document.querySelector('#searchForm')
+const form = document.querySelector('#cryptoSearchForm');
 console.log(form);
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -71,15 +71,26 @@ secondForm.addEventListener('submit', async function (e) {
     document.getElementById("low").innerHTML = low;
 })
 
+$("#cryptoLabel").on('click',function cryptoPage(){
+    $("#introPage").css('display','none');
+    $("#cryptoSearchForm").css('display','block');
+    $("#cryptoMarket").css('display','block')
+})
 
-// ETHER //
-//fetch(urlETH)
-//   .then(function (data) {
-//     return data.json();
-//   })
-//   .then(function (res) {
-//     console.log(res);
-//   });
+$("#stockLabel").on('click',function stockPage(){
+    $("#introPage").css('display','none');
+    $("#stockSearchForm").css('display','block');
+    $("#stockMarket").css('display','block')
+})
+
+$("#homePage").on('click',function returnHome(){
+    $("#introPage").css('display','block');
+    $("#stockSearchForm").css('display','none');
+    $("#stockMarket").css('display','none')
+    $("#cryptoSearchForm").css('display','none');
+    $("#cryptoMarket").css('display','none')
+})
+
 
 
 
