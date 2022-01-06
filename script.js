@@ -1,4 +1,5 @@
-
+//creating an eventlistener that will run a function once the user searches for a crytpto currency
+//the function accounts for whether the user uses enter or the search button to commit the search
 const form = document.querySelector('#cryptoSearchForm');
 console.log(form);
 form.addEventListener('submit', async function (e) {
@@ -35,7 +36,7 @@ form.addEventListener('submit', async function (e) {
     var dayChange = ((res.data['Time Series (Digital Currency Daily)'][date]["1a. open (USD)"])-(res.data['Time Series (Digital Currency Daily)'][date]["4a. close (USD)"]));
     
     console.log(dayChange);
-    
+//pushing data to the HTML page to displayed for the user   
     document.getElementById("coinname").innerHTML = coinSearched;
     document.getElementById("price").innerHTML = currentPrice;
     document.getElementById("marketCap").innerHTML = marketCap;
@@ -44,12 +45,10 @@ form.addEventListener('submit', async function (e) {
 
  
 })
+//creating a similar event listener and function for the searching a stock ticker
 const secondForm = document.querySelector('#stockSearchForm')
 secondForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    var today = new Date();
-    var estDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getUTCDate()).slice(-2)
-    console.log(estDate);
     var stockTerm = secondForm.elements.query.value;
     
     stockTerm = stockTerm.toUpperCase();
@@ -70,19 +69,19 @@ secondForm.addEventListener('submit', async function (e) {
     document.getElementById("high").innerHTML = high;
     document.getElementById("low").innerHTML = low;
 })
-
+//creating a function to call the crypto page once the user clicks on the crypto market label
 $("#cryptoLabel").on('click',function cryptoPage(){
     $("#introPage").css('display','none');
     $("#cryptoSearchForm").css('display','block');
     $("#cryptoMarket").css('display','block')
 })
-
+//A function to call the stock market page
 $("#stockLabel").on('click',function stockPage(){
     $("#introPage").css('display','none');
     $("#stockSearchForm").css('display','block');
     $("#stockMarket").css('display','block')
 })
-
+//A function to allow the user to return to the home page
 $("#homePage").on('click',function returnHome(){
     $("#introPage").css('display','flex');
     $("#stockSearchForm").css('display','none');
@@ -90,40 +89,3 @@ $("#homePage").on('click',function returnHome(){
     $("#cryptoSearchForm").css('display','none');
     $("#cryptoMarket").css('display','none')
 })
-
-// var cLabel = document.getElementById("cryptoLabel")
-// var iPage =
-// var cSForm =
-// cLabel.addEventListener('click',cPage1)
-// function cPage1(){
-//     ipagedsad.style.display=block;
-// }
-
-
-
-
-
-
-// // BITCOIN//
-// fetch(urlBTC)
-//   .then(function (data) {
-//     return data.json();
-//   })
-//   .then(function (res) {
-//     console.log(res);
-
-//   });
-
-// // CARDANO //
-// fetch(urlCardano)
-//   .then(function (data) {
-//     return data.json();
-//   })
-//   .then(function (res) {
-//     console.log(res);
-//   });
-
-
-
-// <!-- API KEY -->
-//  98J29VO1JNI4HWKO
