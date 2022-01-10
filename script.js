@@ -1,51 +1,107 @@
-const form = document.querySelector('#searchForm')
-
+const form = document.querySelector('#cryptoSearchForm');
+console.log(form);
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const searchTerm = form.elements.query.value;
     const res = await axios.get(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${searchTerm}&market=USD&interval=5min&apikey=98J29VO1JNI4HWKO`);
+    const second = await axios.get(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=${searchTerm}&market=USD&apikey=98J29VO1JNI4HWKO`);
+    const third = await axios.get(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${searchTerm}&market=USD&interval=1min&apikey=98J29VO1JNI4HWKO`);
+    const monthlyData = await axios.get(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=${searchTerm}&market=USD&apikey=98J29VO1JNI4HWKO`);
     console.log(res.data);
     console.log(res.data['Meta Data']);
+    console.log(second.data);
+    console.log(second.data['Meta Data']);
+    console.log(third.data);
+    console.log(third.data['Meta Data']);
+    console.log(monthlyData.data);
+    console.log(monthlyData.data['Meta Data']);
+    
    
   
 // Variables for Crypto Search Criteria
-
+    var today = new Date();
+//creating a string date that will automatically add 0 to the date but will only keep the last two characters
+// therefore if month returns as 8 it will show as 08
+    var date = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getUTCDate()).slice(-2)
+    var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate())+' '+(today.getUTCHours())+':'+(today.getMinutes())+':'+'00';
+   
+    console.log(date);
+    console.log(time);
     var coinSearched = (res.data['Meta Data']['3. Digital Currency Name'])
-    var dailyHigh = (res.data['Time Series (Digital Currency Daily)']["2021-12-27"]["2a. high (USD)"])
-    var dailyClose = (res.data['Time Series (Digital Currency Daily)']["2021-12-27"]["4a. close (USD)"])
-    var marketCap = (res.data['Time Series (Digital Currency Daily)']["2021-12-27"]["6. market cap (USD)"])
-
+    var currentPrice = (res.data["Time Series (Digital Currency Daily)"][date]["4b. close (USD)"]);
+    var weeklyChange = ((second.data['Time Series (Digital Currency Weekly)'][date]["1a. open (USD)"])-(second.data['Time Series (Digital Currency Weekly)'][date]["4a. close (USD)"]));
+    var marketCap = (res.data['Time Series (Digital Currency Daily)'][date]["6. market cap (USD)"])
+    var dayChange = ((res.data['Time Series (Digital Currency Daily)'][date]["1a. open (USD)"])-(res.data['Time Series (Digital Currency Daily)'][date]["4a. close (USD)"]));
+    
+    console.log(dayChange);
+    
     document.getElementById("coinname").innerHTML = coinSearched;
-    document.getElementById("dailyhigh").innerHTML = dailyHigh;
-    document.getElementById("closeprice").innerHTML = dailyClose;
-    document.getElementById("marketcap").innerHTML = marketCap;
+    document.getElementById("price").innerHTML = currentPrice;
+    document.getElementById("marketCap").innerHTML = marketCap;
+    document.getElementById("dayChange").innerHTML = dayChange;
+    document.getElementById("weeklyChange").innerHTML = weeklyChange;
 
+ 
+})
+const secondForm = document.querySelector('#stockSearchForm')
+secondForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var today = new Date();
+    var estDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getUTCDate()).slice(-2)
+    console.log(estDate);
+    var stockTerm = secondForm.elements.query.value;
     
-// Object.values(res.data['Meta Data']).forEach(element => {
-//     console.log(element)
-// });
+    stockTerm = stockTerm.toUpperCase();
     
-    
-    
-    
-    
-    
-    
-    // var info = [res.data]
-    // console.log(info)
+    const stock = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stockTerm}/prev?adjusted=true&apiKey=lHJ4GPGobT8l6AGkzz_iHfotJDNhUCeM`);
+    const info = await axios.get(`https://api.polygon.io/v1/meta/symbols/${stockTerm}/company?apiKey=lHJ4GPGobT8l6AGkzz_iHfotJDNhUCeM`);
+    console.log(stock.data);
+    console.log(info.data);
+    var price = (stock.data['results']['0']['c']);
+    var name = (info.data['name']);
+    var marketCap = (info.data['marketcap']);
+    var high = (stock.data['results']['0']['h']);
+    var low = (stock.data['results']['0']['l']);
+
+    document.getElementById("stockPrice").innerHTML = price;
+    document.getElementById("tickerName").innerHTML = name;
+    document.getElementById("stockMarketCap").innerHTML = marketCap;
+    document.getElementById("high").innerHTML = high;
+    document.getElementById("low").innerHTML = low;
 })
 
+$("#cryptoLabel").on('click',function cryptoPage(){
+    $("#introPage").css('display','none');
+    $("#cryptoSearchForm").css('display','block');
+    $("#cryptoMarket").css('display','block')
+})
+
+$("#stockLabel").on('click',function stockPage(){
+    $("#introPage").css('display','none');
+    $("#stockSearchForm").css('display','block');
+    $("#stockMarket").css('display','block')
+})
+
+$("#homePage").on('click',function returnHome(){
+    $("#introPage").css('display','flex');
+    $("#stockSearchForm").css('display','none');
+    $("#stockMarket").css('display','none')
+    $("#cryptoSearchForm").css('display','none');
+    $("#cryptoMarket").css('display','none')
+})
+
+// var cLabel = document.getElementById("cryptoLabel")
+// var iPage =
+// var cSForm =
+// cLabel.addEventListener('click',cPage1)
+// function cPage1(){
+//     ipagedsad.style.display=block;
+// }
 
 
 
-// // ETHER //
-// fetch(urlETH)
-//   .then(function (data) {
-//     return data.json();
-//   })
-//   .then(function (res) {
-//     console.log(res);
-//   });
+
+
 
 // // BITCOIN//
 // fetch(urlBTC)
