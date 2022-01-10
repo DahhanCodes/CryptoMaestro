@@ -1,4 +1,3 @@
-
 # Market Maestro
 
 Group Project #1 - 
@@ -9,14 +8,14 @@ Our project allows user to be able to search any Crypto Currency or Stock data t
 
 Our UI
 
-![](images/Homepage.JPG)
+![](assets/website.JPG)
 
 API Used
 •	Alpha Vantage (Crypto)
 •	Polygon (Stock)
 
-![](images/workflow.jpg)
-![](images/workallocated.jpg)
+![](assets/workFlow.jpg)
+![](assets/workallocated.JPG)
 =======
 
 # CryptoMaestro
