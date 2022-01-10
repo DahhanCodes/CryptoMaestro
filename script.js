@@ -24,7 +24,7 @@ form.addEventListener('submit', async function (e) {
     var today = new Date();
 //creating a string date that will automatically add 0 to the date but will only keep the last two characters
 // therefore if month returns as 8 it will show as 08
-    var date = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getDate()).slice(-2)
+    var date = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getUTCDate()).slice(-2)
     var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate())+' '+(today.getUTCHours())+':'+(today.getMinutes())+':'+'00';
    
     console.log(date);
