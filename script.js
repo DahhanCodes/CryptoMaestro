@@ -1,5 +1,7 @@
-const form = document.querySelector('#searchForm')
-
+//creating an eventlistener that will run a function once the user searches for a crytpto currency
+//the function accounts for whether the user uses enter or the search button to commit the search
+const form = document.querySelector('#cryptoSearchForm');
+console.log(form);
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const searchTerm = form.elements.query.value;
@@ -20,18 +22,21 @@ form.addEventListener('submit', async function (e) {
   
 // Variables for Crypto Search Criteria
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate());
+//creating a string date that will automatically add 0 to the date but will only keep the last two characters
+// therefore if month returns as 8 it will show as 08
+    var date = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + today.getUTCDate()).slice(-2)
     var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getUTCDate())+' '+(today.getUTCHours())+':'+(today.getMinutes())+':'+'00';
+   
     console.log(date);
     console.log(time);
     var coinSearched = (res.data['Meta Data']['3. Digital Currency Name'])
-    var currentPrice = (res.data['Time Series (Digital Currency Daily)'][date]["4a. close (USD)"]);
+    var currentPrice = (res.data["Time Series (Digital Currency Daily)"][date]["4b. close (USD)"]);
     var weeklyChange = ((second.data['Time Series (Digital Currency Weekly)'][date]["1a. open (USD)"])-(second.data['Time Series (Digital Currency Weekly)'][date]["4a. close (USD)"]));
     var marketCap = (res.data['Time Series (Digital Currency Daily)'][date]["6. market cap (USD)"])
     var dayChange = ((res.data['Time Series (Digital Currency Daily)'][date]["1a. open (USD)"])-(res.data['Time Series (Digital Currency Daily)'][date]["4a. close (USD)"]));
     
     console.log(dayChange);
-    
+//pushing data to the HTML page to displayed for the user   
     document.getElementById("coinname").innerHTML = coinSearched;
     document.getElementById("price").innerHTML = currentPrice;
     document.getElementById("marketCap").innerHTML = marketCap;
@@ -40,45 +45,47 @@ form.addEventListener('submit', async function (e) {
 
  
 })
+//creating a similar event listener and function for the searching a stock ticker
 const secondForm = document.querySelector('#stockSearchForm')
 secondForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const stockTerm = secondForm.elements.secondQuery.value;
-    const stock = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stockTerm}/range/1/day/2020-06-01/2020-06-17?apiKey=9i7i9_KCzpeIvJGS3J4PRpwcu0E4vRiY`);
-    console.log(stock.data)
+    var stockTerm = secondForm.elements.query.value;
+    
+    stockTerm = stockTerm.toUpperCase();
+    
+    const stock = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stockTerm}/prev?adjusted=true&apiKey=lHJ4GPGobT8l6AGkzz_iHfotJDNhUCeM`);
+    const info = await axios.get(`https://api.polygon.io/v1/meta/symbols/${stockTerm}/company?apiKey=lHJ4GPGobT8l6AGkzz_iHfotJDNhUCeM`);
+    console.log(stock.data);
+    console.log(info.data);
+    var price = (stock.data['results']['0']['c']);
+    var name = (info.data['name']);
+    var marketCap = (info.data['marketcap']);
+    var high = (stock.data['results']['0']['h']);
+    var low = (stock.data['results']['0']['l']);
+
+    document.getElementById("stockPrice").innerHTML = price;
+    document.getElementById("tickerName").innerHTML = name;
+    document.getElementById("stockMarketCap").innerHTML = marketCap;
+    document.getElementById("high").innerHTML = high;
+    document.getElementById("low").innerHTML = low;
 })
-
-
-
-// // ETHER //
-// fetch(urlETH)
-//   .then(function (data) {
-//     return data.json();
-//   })
-//   .then(function (res) {
-//     console.log(res);
-//   });
-
-// // BITCOIN//
-// fetch(urlBTC)
-//   .then(function (data) {
-//     return data.json();
-//   })
-//   .then(function (res) {
-//     console.log(res);
-
-//   });
-
-// // CARDANO //
-// fetch(urlCardano)
-//   .then(function (data) {
-//     return data.json();
-//   })
-//   .then(function (res) {
-//     console.log(res);
-//   });
-
-
-
-// <!-- API KEY -->
-//  98J29VO1JNI4HWKO
+//creating a function to call the crypto page once the user clicks on the crypto market label
+$("#cryptoLabel").on('click',function cryptoPage(){
+    $("#introPage").css('display','none');
+    $("#cryptoSearchForm").css('display','block');
+    $("#cryptoMarket").css('display','block')
+})
+//A function to call the stock market page
+$("#stockLabel").on('click',function stockPage(){
+    $("#introPage").css('display','none');
+    $("#stockSearchForm").css('display','block');
+    $("#stockMarket").css('display','block')
+})
+//A function to allow the user to return to the home page
+$("#homePage").on('click',function returnHome(){
+    $("#introPage").css('display','flex');
+    $("#stockSearchForm").css('display','none');
+    $("#stockMarket").css('display','none')
+    $("#cryptoSearchForm").css('display','none');
+    $("#cryptoMarket").css('display','none')
+})
