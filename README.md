@@ -8,23 +8,11 @@ Our project allows user to be able to search any Crypto Currency or Stock data t
 
 Our UI
 
-image
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![](images/Homepage.JPG)
 
 API Used
 •	Alpha Vantage (Crypto)
 •	Polygon (Stock)
+
+![](images/workflow.jpg)
+![](images/workallocated.jpg)
