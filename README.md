@@ -23,6 +23,8 @@ Our UI
 
 
 
+
+
 API Used
 •	Alpha Vantage (Crypto)
 •	Polygon (Stock)
