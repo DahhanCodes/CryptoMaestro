@@ -1,6 +1,6 @@
 # Market Maestro
 
-Group Project #1 - https://dahhancodes.github.io/CryptoMaestro/
+Group Project #1 - https://dahhancodes.github.io/MarketMaestro/
 
 Project – Market Maestro
 Description                                                                                                  
