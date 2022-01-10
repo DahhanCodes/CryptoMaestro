@@ -8,7 +8,7 @@ Our project allows user to be able to search any Crypto Currency or Stock data t
 
 Our UI
 
-
+image
 
 
 
