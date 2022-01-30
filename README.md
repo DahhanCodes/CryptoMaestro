@@ -84,14 +84,16 @@ I thought this would be a simple site with few page elements to style and make r
 
 Link to screenshots of the Market Maestro pages:
 
-! [Index Page Screenshot] (./assets/images/market-maestro-index.png)
-! [Index Page Device (iPhone 12 Pro) Screenshot] (./assets/images/market-maestro-index-device.png)
+! [Index Page Screenshot](./assets/images/market-maestro-index.png)
 
-! [Stock Market Page Screenshot] (./assets/images/market-maestro-stock-page.png)
+! [Index Page Device (iPhone 12 Pro) Screenshot](./assets/images/market-maestro-index-device.png)
+
+! [Stock Market Page Screenshot](./assets/images/market-maestro-stock-page.png)
 ! [Stock Market Page Device(iPhone 12 Pro) Screenshot] (./assets/images/market-maestro-stock-page-device.png)
 
-! [Crypto Market Page Screenshot] (./assets/images/market-maestro-crypto-page.png)
-! [Crypto Market Page Device (iPhone 12 Pro) Screenshot] (./assets/images/market-maestro-crypto-page-device.png)
+! [Crypto Market Page Screenshot](./assets/images/market-maestro-crypto-page.png)
+
+! [Crypto Market Page Device (iPhone 12 Pro) Screenshot](./assets/images/market-maestro-crypto-page-device.png)
 
 URL of the deployed application:
 <https://snugglesmcgee.github.io/MarketMaestro>
